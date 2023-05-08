@@ -14,8 +14,8 @@ public class PokemonController {
 	@Autowired
 	private PokemonService pokemonService;
 	
-	@GetMapping("/")
-	public String index() {
-		return "Greetings from Spring Boot!";
+	@GetMapping("/getCurrentPokemon")
+	public String getCurrentPokemon() {
+		return pokemonService.getCurrentPokemon();
 	}
 }
