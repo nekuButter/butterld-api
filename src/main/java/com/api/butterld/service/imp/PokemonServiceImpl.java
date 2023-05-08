@@ -18,10 +18,10 @@ public class PokemonServiceImpl implements PokemonService{
 	@Override
 	public String getCurrentPokemon() {
 
-		Optional<PokemonEntity> currentPokemon = pokemonRepository.findById(1);
+		PokemonEntity currentPokemon = pokemonRepository.getCurrentPokemon();
 		
-		if(currentPokemon.isPresent()) {
-			return currentPokemon.get().getPokemon_name();
+		if(currentPokemon != null) {
+			return currentPokemon.getPokemon_name();
 		}
 		return null;
 	}
