@@ -4,6 +4,6 @@ import com.api.butterld.entity.PokemonEntity;
 
 public interface PokemonRepositoryCustom {
 
-	public PokemonEntity getCurrentPokemon();
-	
+	public PokemonEntity getLastPokemon();
+
 }

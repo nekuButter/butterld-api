@@ -14,8 +14,13 @@ public class PokemonController {
 	@Autowired
 	private PokemonService pokemonService;
 	
-	@GetMapping("/getCurrentPokemon")
+	@GetMapping("/getCurrent")
 	public String getCurrentPokemon() {
+		return pokemonService.getCurrentPokemon();
+	}
+	
+	@GetMapping("renew")
+	public String renewPokemon() {
 		return pokemonService.getCurrentPokemon();
 	}
 }

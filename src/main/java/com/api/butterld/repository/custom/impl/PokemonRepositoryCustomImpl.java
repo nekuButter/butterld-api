@@ -11,26 +11,24 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
-public class PokemonRepositoryCustomImpl implements PokemonRepositoryCustom{
+public class PokemonRepositoryCustomImpl implements PokemonRepositoryCustom {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-    
+	@PersistenceContext
+	private EntityManager entityManager;
+
 	@Override
-	public PokemonEntity getCurrentPokemon() {
-		
+	public PokemonEntity getLastPokemon() {
+
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<PokemonEntity> query = cb.createQuery(PokemonEntity.class);
-		
-        Root<PokemonEntity> root = query.from(PokemonEntity.class);
-        
-        query.select(root)
-        	.orderBy(cb.desc(root.get("date")));
-        	
-        List<PokemonEntity> results = entityManager.createQuery(query)
-        		.setMaxResults(1).getResultList();
-        
-        return results.isEmpty() ? null : results.get(0);
+		CriteriaQuery<PokemonEntity> query = cb.createQuery(PokemonEntity.class);
+
+		Root<PokemonEntity> root = query.from(PokemonEntity.class);
+
+		query.select(root).orderBy(cb.desc(root.get("date")));
+
+		List<PokemonEntity> results = entityManager.createQuery(query).setMaxResults(1).getResultList();
+
+		return results.isEmpty() ? null : results.get(0);
 	}
 
 }

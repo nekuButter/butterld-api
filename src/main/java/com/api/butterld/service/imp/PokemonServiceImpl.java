@@ -1,7 +1,5 @@
 package com.api.butterld.service.imp;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,7 @@ public class PokemonServiceImpl implements PokemonService{
 	@Override
 	public String getCurrentPokemon() {
 
-		PokemonEntity currentPokemon = pokemonRepository.getCurrentPokemon();
+		PokemonEntity currentPokemon = pokemonRepository.getLastPokemon();
 		
 		if(currentPokemon != null) {
 			return currentPokemon.getPokemon_name();
